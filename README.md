@@ -4,10 +4,10 @@ A good-for-nothing test to explore the hardship and quirks of native Android dev
 
 The aim of this little project is to understand:
 
-- how difficult it is to develop a 100% (or close) native application in Android
+- if it's possible to develop an application using almost only C/C++
+- how difficult that would be
 - how hard it is to cross-compile external libraries and their dependencies, specifically Guile
-- if it's possible to completely develop an application using C/C++
-- what the performances could be
+- how Guile would perform
 - what are the limitations of using C/C++ when a Java functionality is required, like the `MediaStore` class or intents
 
 And is the natural continuation of my previous https://github.com/R1ck77/guile-python-interop-test
