@@ -23,3 +23,14 @@ The app uses a standard activity to present a C++ string, the string is stored a
 ## Desiderata
 
 Getting Guile to compile somehow.
+
+
+## Disclaimer 
+
+This project uses and most importantly contains most of the Lua-5.4.0 distribution in source form: I don't own that code, I am in no way affiliated with Lua or Lua.org and all lua code and material is covered by Lua's own license (https://www.lua.org/license.html).
+
+The latest Lua distribution can be obtained at this URL:
+
+https://www.lua.org/download.html
+
+Also, do learn Lua if you can: it's an **awesome** language!
