@@ -19,4 +19,11 @@ export CXX=$TOOLCHAIN/bin/$TARGET$API-clang++
 export LD=$TOOLCHAIN/bin/arm-linux-androideabi-ld
 export RANLIB=$TOOLCHAIN/bin/arm-linux-androideabi-ranlib
 export STRIP=$TOOLCHAIN/bin/arm-linux-androideabi-strip
+
+export LDFLAGS="$LDFLAGS -L/scratch/guile_compilation/local/lib"
+export CPPFLAGS="$CPPFLAGS -I/scratch/guile_compilation/local/include"
+
 echo "Execute: ./configure --host $TARGET"
+
+
+
