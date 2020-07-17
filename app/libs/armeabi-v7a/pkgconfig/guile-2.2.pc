@@ -1,0 +1,30 @@
+prefix=/scratch/guile_compilation/local
+exec_prefix=/scratch/guile_compilation/local
+bindir=/scratch/guile_compilation/local/bin
+libdir=/scratch/guile_compilation/local/lib
+includedir=/scratch/guile_compilation/local/include
+datarootdir=/scratch/guile_compilation/local/share
+datadir=/scratch/guile_compilation/local/share
+pkgdatadir=/scratch/guile_compilation/local/share/guile
+pkgincludedir=/scratch/guile_compilation/local/include/guile
+
+sitedir=/scratch/guile_compilation/local/share/guile/site/2.2
+extensiondir=/scratch/guile_compilation/local/lib/guile/2.2/extensions
+siteccachedir=/scratch/guile_compilation/local/lib/guile/2.2/site-ccache
+libguileinterface=5:2:4
+
+# Actual name of the 'guile' and 'guild' programs.  This is
+# particularly useful when '--program-transform-name' or similar has
+# been used.
+guild=${bindir}/guild
+guile=${bindir}/guile
+
+Name: GNU Guile
+Description: GNU's Ubiquitous Intelligent Language for Extension
+Version: 2.2.7
+Libs: -L${libdir} -lguile-2.2 -lgc
+Libs.private:  /scratch/guile_compilation/local/lib/libgmp.so /home/dimeo/local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/21/libm.so -Wl,-rpath -Wl,/scratch/guile_compilation/local/lib -Wl,-rpath -Wl,/home/dimeo/local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/21 /scratch/guile_compilation/local/lib/libltdl.so /home/dimeo/local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/21/libm.so -Wl,-rpath -Wl,/scratch/guile_compilation/local/lib -Wl,-rpath -Wl,/home/dimeo/local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/21 -lffi	\
+  /scratch/guile_compilation/local/lib/libunistring.so -L/scratch/guile_compilation/local/lib /scratch/guile_compilation/local/lib/libiconv.so /home/dimeo/local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/21/libm.so -Wl,-rpath -Wl,/scratch/guile_compilation/local/lib -Wl,-rpath -Wl,/home/dimeo/local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/21 -lm /scratch/guile_compilation/local/lib/libiconv.so /home/dimeo/local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/21/libm.so -Wl,-rpath -Wl,/scratch/guile_compilation/local/lib -Wl,-rpath -Wl,/home/dimeo/local/Android/Sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/21  		\
+     		\
+  
+Cflags: -I${pkgincludedir}/2.2 -I/scratch/guile_compilation/local/include  
