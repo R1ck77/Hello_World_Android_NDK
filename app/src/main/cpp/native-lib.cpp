@@ -1,9 +1,6 @@
 #include <jni.h>
 #include <string>
-extern "C" {
-  //  #include <libguile.h>
-}
-
+#include <libguile.h>
 
 extern "C" JNIEXPORT jstring JNICALL
 Java_it_couchgamessoftware_helloworld_metal_MainActivity_stringFromJNI(

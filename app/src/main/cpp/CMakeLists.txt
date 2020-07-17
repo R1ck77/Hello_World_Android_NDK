@@ -34,8 +34,6 @@ add_library(ltdl SHARED IMPORTED)
 set_property(TARGET ltdl PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/../../../libs/${ANDROID_ABI}/libltdl.so)
 target_include_directories(native-lib PUBLIC ltdl)
 
-
-
 find_library(log-lib log)
 
 target_link_libraries(native-lib ${log-lib} guile-2.2 gc ffi unistring iconv gmp ltdl)
