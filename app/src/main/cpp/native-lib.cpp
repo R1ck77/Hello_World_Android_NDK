@@ -14,18 +14,30 @@ Java_it_couchgamessoftware_helloworld_metal_MainActivity_stringFromJNI(
   __android_log_print(ANDROID_LOG_VERBOSE, "HelloWorldNDK", "====== The string is: %s\n",nativeString);
 
   char guile_load_compiled_path[1000];
-  snprintf(guile_load_compiled_path, 1000, "%s/arm64-v8a/local/lib/guile/2.2/ccache", nativeString);
+  if(sizeof(void*) == 8) {
+    __android_log_print(ANDROID_LOG_VERBOSE, "HelloWorldNDK", "====== Configuring for 64 bits");
+    snprintf(guile_load_compiled_path, 1000, "%s/arm64-v8a/local/lib/guile/2.2/ccache", nativeString);
+  } else {
+    __android_log_print(ANDROID_LOG_VERBOSE, "HelloWorldNDK", "====== Configuring for 32 bits");
+    snprintf(guile_load_compiled_path, 1000, "%s/arm64-v8a/local/lib/guile/2.2/ccache", nativeString);
+  }
 
   setenv("LANG", "UTF-8", 1);
   setenv("GUILE_LOAD_COMPILED_PATH", guile_load_compiled_path, 1);
   //setenv("LD_LIBRARY_PATH", "...", 1);
 
   env->ReleaseStringUTFChars(external_path, nativeString);
-  
+
   scm_init_guile();
-   
-  char *result = strdup("Header and Guile call");
-  jstring android_result = env->NewStringUTF(result);
-  free(result);
+  scm_c_eval_string("(define result \"Hello, from Guile! (evaluated)\n\")");
+  SCM variable = scm_c_lookup("result");
+  SCM referenced = scm_variable_ref(variable);
+  char *cstring = scm_to_utf8_stringn(referenced, nullptr);
+  fprintf(stderr, "Guile contains: '%s'", cstring);
+
+
+
+  jstring android_result = env->NewStringUTF(cstring);
+  free(cstring);
   return android_result;
 }
