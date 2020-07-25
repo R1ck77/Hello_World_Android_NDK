@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //checkAssets();
+        checkAssets();
         copyAssets();
         listExternalStorage();
 
@@ -46,8 +46,11 @@ public class MainActivity extends AppCompatActivity {
         File guardFile = new File(getExternalCacheDir() + "/libraries_copied.guard");
         if(!guardFile.exists()) {
             try {
+                Log.d("HelloWorldNDK", "===== Started copy");
                 copyDirOrFileFromAssetManager("arm64-v8a", "arm64-v8a");
+                Log.d("HelloWorldNDK", "===== ...half done");
                 copyDirOrFileFromAssetManager("armeabi-v7a", "armeabi-v7a");
+                Log.d("HelloWorldNDK", "===== ...finished!");
                 guardFile.createNewFile();
             } catch (IOException e) {
                 Log.e("HelloWorldNDK", "===== Exception: " + e);

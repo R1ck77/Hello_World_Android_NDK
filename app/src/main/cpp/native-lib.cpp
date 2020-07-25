@@ -19,7 +19,7 @@ Java_it_couchgamessoftware_helloworld_metal_MainActivity_stringFromJNI(
     snprintf(guile_load_compiled_path, 1000, "%s/arm64-v8a/local/lib/guile/2.2/ccache", nativeString);
   } else {
     __android_log_print(ANDROID_LOG_VERBOSE, "HelloWorldNDK", "====== Configuring for 32 bits");
-    snprintf(guile_load_compiled_path, 1000, "%s/arm64-v8a/local/lib/guile/2.2/ccache", nativeString);
+    snprintf(guile_load_compiled_path, 1000, "%s/armeabi-v7a/local/lib/guile/2.2/ccache", nativeString);
   }
 
   setenv("LANG", "UTF-8", 1);
