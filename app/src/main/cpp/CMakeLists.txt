@@ -3,9 +3,11 @@
 
 cmake_minimum_required(VERSION 3.4.1)
 
+# Library declaration
 add_library(native-lib SHARED native-lib.cpp)
 include_directories("include/guile/2.2" "include")
 
+# Guile and Guile's dependencies
 add_library(guile-2.2 SHARED IMPORTED)
 set_property(TARGET guile-2.2 PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/../../../libs/${ANDROID_ABI}/libguile-2.2.so)
 target_include_directories(native-lib PUBLIC guile-2.2)
@@ -33,6 +35,7 @@ target_include_directories(native-lib PUBLIC gmp)
 add_library(ltdl SHARED IMPORTED)
 set_property(TARGET ltdl PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/../../../libs/${ANDROID_ABI}/libltdl.so)
 target_include_directories(native-lib PUBLIC ltdl)
+
 
 find_library(log-lib log)
 
