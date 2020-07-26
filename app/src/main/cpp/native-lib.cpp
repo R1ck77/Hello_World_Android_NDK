@@ -3,6 +3,61 @@
 #include <libguile.h>
 #include <android/log.h>
 #include <cstdio>
+#include <sys/stat.h>
+
+#define COPY_BUFFER_SIZE 1024
+
+void copy_file(char *src_path, char *dst_path)
+{
+  char buf[BUFSIZ];
+  size_t size;
+
+  FILE* source = fopen(src_path, "rb");
+  FILE* dest = fopen(dst_path, "wb");
+
+  while ((size = fread(buf, 1, BUFSIZ, source))) {
+    fwrite(buf, 1, size, dest);
+  }
+
+  fclose(source);
+  fclose(dest);
+}
+
+int is_dir(char *path) {
+  struct stat s;
+  return stat(path, &s) == 0 && s.st_mode & S_IFDIR ? 1 : 0;
+}
+
+// TODO/FIXME wasteful
+int is_file(char *path) {
+  struct stat s;
+  return stat(path, &s) == 0 && s.st_mode & S_IFREG ? 1 : 0;
+}
+
+char *concatenate_path(char *dir, char *name)
+{
+  char buffer[COPY_BUFFER_SIZE];
+  strncpy(dir, buffer, COPY_BUFFER_SIZE);
+  strncat(buffer, "/", COPY_BUFFER_SIZE);
+  strncat(buffer, name, COPY_BUFFER_SIZE);
+  return strdup(buffer);
+}
+
+void copy_tree(char *element, char *src_dir, char *dst_dir)
+{
+  char *src_path = concatenate_path(src_dir, element);
+  char *dst_path = concatenate_path(dst_dir, element);
+  if(is_file(src_path)) {
+    copy_file(src_path, dst_path);
+  } else {
+    // List files
+    
+  }
+  free(dst_path);
+  free(src_path);
+}
+
+
 
 extern "C" JNIEXPORT jstring JNICALL
 Java_it_couchgamessoftware_helloworld_metal_MainActivity_stringFromJNI(
