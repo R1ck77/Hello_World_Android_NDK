@@ -4,7 +4,7 @@
 cmake_minimum_required(VERSION 3.4.1)
 
 # Library declaration
-add_library(native-lib SHARED native-lib.cpp)
+add_library(native-lib SHARED native-lib.cpp copy_tree.cpp)
 include_directories("include/guile/2.2" "include")
 
 # Guile and Guile's dependencies
