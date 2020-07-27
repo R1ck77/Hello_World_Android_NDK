@@ -6,7 +6,7 @@
 extern "C" {
 #include <stdlib.h>
 }
-#include "copy_tree.h"
+#include "bootstrapping_utils.h"
 
 extern "C" JNIEXPORT jstring JNICALL
 Java_it_couchgamessoftware_helloworld_metal_MainActivity_stringFromJNI(
