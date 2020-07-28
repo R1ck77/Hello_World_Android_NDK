@@ -34,6 +34,12 @@ android {
             version "3.10.2"
         }
     }
+    splits {
+           abi {
+               enable true
+               universalApk true
+           }
+    }
 }
 
 dependencies {
